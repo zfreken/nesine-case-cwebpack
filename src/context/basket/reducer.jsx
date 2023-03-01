@@ -1,8 +1,12 @@
 import { ADD_TO_CART, CLEAR } from "./type.jsx";
 
-export const sumItems = (basket) => {
+export const totalItems = (basket) => {
+
+  let initialValue=1;
+  if (!basket.length) initialValue = 0;
+
   const total = basket
-    .reduce((total, item) => total + parseFloat(item.value), 0)
+    .reduce((total, item) => total * parseFloat(item.value), initialValue)
     .toFixed(10);
   return { total };
 };
@@ -24,7 +28,7 @@ const BasketReducer = (state, action) => {
       ];
       return {
         ...state,
-        ...sumItems(newData),
+        ...totalItems(newData),
         basketItems: newData,
       };
 

@@ -4,7 +4,7 @@ import Table from "./component/table";
 import Basket from "./component/basket";
 import blt from "./data/bulten_data";
 
-import "./styles/app.css";
+import "./styles/app.scss";
 
 function App() {
   const data = useMemo(() => Object.values(blt.Events), []);
@@ -17,7 +17,7 @@ function App() {
           {
             Header: `Event Count: ${data.length}`,
             accessor: (row, index) => {
-              return `${index+1} ${row.D} ${row.DAY} ${row.LN}`;
+              return `${index+1} - ${row.D} ${row.DAY} ${row.LN}`;
             },
           },
           {
@@ -41,12 +41,12 @@ function App() {
           },
           {
             Header: "X",
-            accessor: "OCG.1.OC.1.O",
-            link: true,
+            accessor: "OCG.1.OC.1.N",
           },
           {
             Header: "2",
-            accessor: "OCG.1.OC.2.O",
+            accessor: "OCG.1.OC.1.O",
+						link: true,
           },
           {
             Header: "Alt",
