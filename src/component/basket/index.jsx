@@ -11,7 +11,7 @@ const Basket = () => {
   const contentRef = useRef();
   useEffect(() => {
     setBasketH(contentRef?.current?.scrollHeight);
-    if (basketItems.length) {
+    if (basketItems.length > 0) {
       setBasketClass("show");
       setTimeout(() => {
         setBasketClass("");
@@ -21,7 +21,7 @@ const Basket = () => {
 
   return (
     <div className={`basket ${basketClass}`}>
-      {basketItems.length && (
+      {basketItems.length > 0 && (
         <>
           <div
             className="basket__toogle"
@@ -66,7 +66,7 @@ const Basket = () => {
             }
           >
             <div ref={contentRef}>
-              {basketItems.length &&
+              {basketItems.length > 0 &&
                 basketItems.map((basket) => (
                   <div key={basket?.nid} className="basket__item">
                     <p>{basket?.objInfo?.MBS}</p>
